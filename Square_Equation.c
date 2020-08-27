@@ -105,7 +105,7 @@ int main()
     DrawEquation(a, b, c);
 
     double x1 = 0, x2 = 0;
-    int nRoots = FindingRoots(a, b, c, &x1, &x2);
+    int nRoots = SolveSquerEq(a, b, c, &x1, &x2);
 
     switch (nRoots)
     {
