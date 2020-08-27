@@ -13,7 +13,7 @@ int FindingRoots(double a, double b, double c, double* x1, double* x2)
         }
         else // if (b =! 0)
         {
-            *x1 = (c == 0) ? 0: -c / b;
+            *x1 = -c / b;
             return 1;
         }
     }
