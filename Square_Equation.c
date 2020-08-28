@@ -6,7 +6,7 @@ const int infinitely_roots = -1;
 
 int DblEquals(double a, double b)
 {
-    return (fabs(a - b) < DBL_Epsilon) ? 1 : 0;
+    return (fabs(a - b) < DBL_EPSILON) ? 1 : 0;
 }
 
 int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
