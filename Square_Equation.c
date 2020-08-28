@@ -1,15 +1,21 @@
 #include <stdio.h>
 #include <math.h>
+#include <float.h>
 
 const int infinitely_roots = -1;
 
+int DblEquals(double a, double b)
+{
+    return (fabs(a - b) < DBL_Epsilon) ? 1 : 0;
+}
+
 int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
 {
-    if (a == 0)
+    if (DblEquals(a, 0.0))
     {
-        if (b == 0)
+        if (DblEquals(b, 0.0))
         {
-            return (c == 0) ? infinitely_roots : 0;
+            return (DblEquals(c, 0.0)) ? infinitely_roots : 0;
         }
         else // if (b =! 0)
         {
@@ -20,7 +26,7 @@ int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
     else // if (a =! 0)
     {
         double D = b*b - 4*a*c;
-        if (D == 0)
+        if (DblEquals(D, 0.0))
         {
             *x1 = -b / 2*a;
             return 1;
@@ -45,7 +51,7 @@ void DrawEquation(double a, double b, double c)
             if (c >= 0) printf("Your equation: %lgx^2 + %lgx + %lg = 0\n", a, b, c);
             else printf("Your equation: %lgx^2 + %lgx - %lg = 0\n", a, b, -c);
         }
-        else if (b == 0)
+        else if (DblEquals(b, 0.0))
         {
             if (c >= 0) printf("Your equation: %lgx^2 + %lg = 0\n", a, c);
             else printf("Your equation: %lgx^2 - %lg = 0\n", a, -c);
@@ -56,14 +62,14 @@ void DrawEquation(double a, double b, double c)
             else printf("Your equation: %lgx^2 - %lgx - %lg = 0\n", a, -b, -c);
         }
     }
-    else if (a == 0)
+    else if (DblEquals(a, 0.0))
     {
         if (b > 0)
         {
             if (c >= 0) printf("Your equation: %lgx + %lg = 0\n", b, c);
                 else printf("Your equation: %lgx - %lg = 0\n", b, -c);
         }
-        else if (b == 0)
+        else if (DblEquals(b, 0.0))
         {
             if (c >= 0) printf("Your equation: %lg = 0\n", c);
             else printf("Your equation: %lg = 0\n", c);
@@ -81,7 +87,7 @@ void DrawEquation(double a, double b, double c)
             if (c >= 0) printf("Your equation: %lgx^2 + %lgx + %lg = 0\n", a, b, c);
             else printf("Your equation: %lgx^2 + %lgx - %lg = 0\n", a, b, -c);
         }
-        else if (b == 0)
+        else if (DblEquals(b, 0.0))
         {
             if (c >= 0) printf("Your equation: %lgx^2 + %lg = 0\n", a, c);
             else printf("Your equation: %lgx^2 - %lg = 0\n", a, -c);
