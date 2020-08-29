@@ -7,7 +7,7 @@ const int infinitely_roots = -1;
 
 //------------------------------------------------------------------------------------------------------
 
-int Comparison(double a, double b)
+int IsGreater(double a, double b)
 {
     return ((a - b) > DBL_EPSILON)? 1 : 0;
 }
