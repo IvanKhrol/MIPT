@@ -1,16 +1,31 @@
 #include <stdio.h>
 #include <math.h>
 #include <float.h>
+#include <TXLib.h>
 
 const int infinitely_roots = -1;
 
+//------------------------------------------------------------------------------------------------------
+
+int Comparison(double a, double b)
+{
+    return ((a - b) > DBL_EPSILON)? 1 : 0;
+}
+
+//------------------------------------------------------------------------------------------------------
+
 int DblEquals(double a, double b)
 {
-    return (fabs(a - b) < DBL_EPSILON) ? 1 : 0;
+    return (abs(a - b) < DBL_EPSILON) ? 1 : 0;
 }
+
+//------------------------------------------------------------------------------------------------------
 
 int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
 {
+    assert(x1);
+    assert(x2);
+
     if (DblEquals(a, 0.0))
     {
         if (DblEquals(b, 0.0))
@@ -31,7 +46,7 @@ int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
             *x1 = -b / 2*a;
             return 1;
         }
-        else if (D > 0)
+        else if (Comparison(D, 0.0))
         {
             double sqrt_D = sqrt(D);
             *x1 = (-b + sqrt_D) / (2*a);
@@ -41,6 +56,8 @@ int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
         else return 0; // if (D < 0)
     }
 }
+
+//------------------------------------------------------------------------------------------------------
 
 void DrawEquation(double a, double b, double c)
 {
@@ -99,6 +116,8 @@ void DrawEquation(double a, double b, double c)
         }
     }
 }
+
+//------------------------------------------------------------------------------------------------------
 
 int main()
 {
