@@ -46,7 +46,7 @@ int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
             *x1 = -b / 2*a;
             return 1;
         }
-        else if (Comparison(D, 0.0))
+        else if (IsGreater(D, 0.0))
         {
             double sqrt_D = sqrt(D);
             *x1 = (-b + sqrt_D) / (2*a);
@@ -59,62 +59,37 @@ int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
 
 //------------------------------------------------------------------------------------------------------
 
+void PrintA(double a)
+{
+    if (!DblEquals(a, 0.0))
+        printf("%+lgx^2", a);
+}
+
+//------------------------------------------------------------------------------------------------------
+
+
+void PrintB(double b)
+{
+    if (!DblEquals(b, 0.0))
+        printf("%+lgx", b);
+}
+
+//------------------------------------------------------------------------------------------------------
+
+void PrintC(double c)
+{
+    printf("%+lg", c);
+}
+
+//------------------------------------------------------------------------------------------------------
+
 void DrawEquation(double a, double b, double c)
 {
-    if (a > 0)
-    {
-        if (b > 0)
-        {
-            if (c >= 0) printf("Your equation: %lgx^2 + %lgx + %lg = 0\n", a, b, c);
-            else printf("Your equation: %lgx^2 + %lgx - %lg = 0\n", a, b, -c);
-        }
-        else if (DblEquals(b, 0.0))
-        {
-            if (c >= 0) printf("Your equation: %lgx^2 + %lg = 0\n", a, c);
-            else printf("Your equation: %lgx^2 - %lg = 0\n", a, -c);
-        }
-        else  // if (b < 0)
-        {
-            if (c >= 0) printf("Your equation: %lgx^2 - %lgx + %lg = 0\n", a, -b, c);
-            else printf("Your equation: %lgx^2 - %lgx - %lg = 0\n", a, -b, -c);
-        }
-    }
-    else if (DblEquals(a, 0.0))
-    {
-        if (b > 0)
-        {
-            if (c >= 0) printf("Your equation: %lgx + %lg = 0\n", b, c);
-                else printf("Your equation: %lgx - %lg = 0\n", b, -c);
-        }
-        else if (DblEquals(b, 0.0))
-        {
-            if (c >= 0) printf("Your equation: %lg = 0\n", c);
-            else printf("Your equation: %lg = 0\n", c);
-        }
-        else  // if (b < 0)
-        {
-            if (c >= 0) printf("Your equation: %lgx + %lg = 0\n", b, c);
-            else printf("Your equation: %lgx - %lg = 0\n", b, -c);
-        }
-    }
-    else // if (a < 0)
-    {
-        if (b > 0)
-        {
-            if (c >= 0) printf("Your equation: %lgx^2 + %lgx + %lg = 0\n", a, b, c);
-            else printf("Your equation: %lgx^2 + %lgx - %lg = 0\n", a, b, -c);
-        }
-        else if (DblEquals(b, 0.0))
-        {
-            if (c >= 0) printf("Your equation: %lgx^2 + %lg = 0\n", a, c);
-            else printf("Your equation: %lgx^2 - %lg = 0\n", a, -c);
-        }
-        else  // if (b < 0)
-        {
-            if (c >= 0) printf("Your equation: %lgx^2 - %lgx + %lg = 0\n", a, -b, c);
-            else printf("Your equation: %lgx^2 - %lgx - %lg = 0\n", a, -b, -c);
-        }
-    }
+    printf("Your equation: ");
+    PrintA(a);
+    PrintB(b);
+    PrintC(c);
+    printf("=0\n");
 }
 
 //------------------------------------------------------------------------------------------------------
