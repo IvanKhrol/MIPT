@@ -59,36 +59,17 @@ int SolveSquerEq(double a, double b, double c, double* x1, double* x2)
 
 //------------------------------------------------------------------------------------------------------
 
-void PrintA(double a)
-{
-    if (!DblEquals(a, 0.0))
-        printf("%+lgx^2", a);
-}
-
-//------------------------------------------------------------------------------------------------------
-
-
-void PrintB(double b)
-{
-    if (!DblEquals(b, 0.0))
-        printf("%+lgx", b);
-}
-
-//------------------------------------------------------------------------------------------------------
-
-void PrintC(double c)
-{
-    printf("%+lg", c);
-}
-
-//------------------------------------------------------------------------------------------------------
-
 void DrawEquation(double a, double b, double c)
 {
     printf("Your equation: ");
-    PrintA(a);
-    PrintB(b);
-    PrintC(c);
+
+    if (!DblEquals(a, 0.0))
+        printf("%+lgx^2", a);
+
+    if (!DblEquals(b, 0.0))
+        printf("%+lgx", b);
+
+    printf("%+lg", c);
     printf("=0\n");
 }
 
