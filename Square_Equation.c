@@ -64,12 +64,13 @@ void DrawEquation(double a, double b, double c)
     printf("Your equation: ");
 
     if (!DblEquals(a, 0.0))
-        printf("%+lgx^2", a);
+        printf("%lgx^2", a);
 
     if (!DblEquals(b, 0.0))
         printf("%+lgx", b);
 
-    printf("%+lg", c);
+    if ((!DblEquals(c, 0.0)) || (DblEquals(a, 0.0) && DblEquals(b, 0.0)))
+        printf("%+lg", c);
     printf("=0\n");
 }
 
